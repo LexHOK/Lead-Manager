@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { addLead } from '../../actions/leads'
 
 
-export class Form extends Component {
+class Form extends Component {
   state = {
     name: '',
     email: '',
@@ -15,9 +15,9 @@ export class Form extends Component {
     addLead: PropTypes.func.isRequired
   }
 
-  onChange = e => this.setState({ [e.target.name]: e.target.value });
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-  onSubmit = e => {
+  handleSubmit = e => {
     e.preventDefault();
     const { name, email, message } = this.state;
     const lead = { name, email, message };
@@ -29,18 +29,18 @@ export class Form extends Component {
     return (
       <div className="card card-body mt-4 mb-4">
         <h2>Add Lead</h2>
-        <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Name</label>
-            <input className="form-control" type="text" name="name" onChange={this.onChange} value={name} />
+            <input className="form-control" type="text" name="name" onChange={this.handleChange} value={name} />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input className="form-control" type="text" name="email" onChange={this.onChange} value={email} />
+            <input className="form-control" type="text" name="email" onChange={this.handleChange} value={email} />
           </div>
           <div className="form-group">
             <label>Message</label>
-            <input className="form-control" type="text" name="message" onChange={this.onChange} value={message} />
+            <input className="form-control" type="text" name="message" onChange={this.handleChange} value={message} />
           </div>
           <div className="form-group">
             <button className="btn btn-primary">
